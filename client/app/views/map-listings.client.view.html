@@ -1,11 +1,12 @@
-<html>
-	<head>
-		
-	</head>
-	<body>
-
-	</body>
-</html>
+<div id="map_canvas" ng-controller="ListingsController" ng-init="find()"> 
+  <ui-gmap-google-map center = "map.center" zoom="map.zoom" draggable="true"> </ui-gmap-google-map>
+    <ui-gmap-markers models=""> </ui-gmap-markers>
+    <ui-gmap-windows show="show">
+      <div ng-non-bindable>{{listings.name}}</div>
+      <div ng-non-bindable>{{listings.code}}</div>
+      <div ng-non-bindable>{{listings.address}}</div>
+    </ui-gmap-windows>
+</div>
 
 <!-- 
   Create a new view that uses a map to display all the listings with the angular-google-maps library. 
