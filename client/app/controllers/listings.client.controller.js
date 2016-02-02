@@ -138,5 +138,31 @@ angular.module('listings').controller('ListingsController', ['$scope', '$locatio
       }, 
       zoom: 14
     }
+
+    $scope.markers = [];
+    
+    Listings.getAll().then(function(response) {
+
+      $scope.listings = response.data;
+
+      var marker;
+      for (var i = 0; i < $scope.listings.length; i++) {
+        marker = {
+          code: $scope.listings[i].code,
+          name: $scope.listings[i].name,
+          address: $scope.listings[i].address,
+          latitude: $scope.listings[i].coordinates.latitude,
+          longitude: $scope.listings[i].coordinates.longitude,
+          show: false,
+          id: i
+        };
+        $scope.markers[i] = marker;
+      };
+    });
+    
+
+    $scope.onClick = function(marker, eventName, model) {
+      model.show = !model.show;
+    }
   }
 ]);
